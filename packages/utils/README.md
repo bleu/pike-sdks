@@ -1,10 +1,10 @@
-# @pike/utils
+# @pike-sdk/utils
 
-The @pike/utils package provides base utilities for calculating various metrics, interacting with Pike smart contracts, and expose contract ABIs. This package includes tools for computing health indices, APY rates, and implementing interest rate models. It was made to be a standalone package that can be integrated on any TS environment.
+The @pike-sdk/utils package provides base utilities for calculating various metrics, interacting with Pike smart contracts, and expose contract ABIs. This package includes tools for computing health indices, APY rates, and implementing interest rate models. It was made to be a standalone package that can be integrated on any TS environment.
 
 ## Table of Contents
 
-- [@pike/utils](#pikeutils)
+- [@pike-sdk/utils](#pikeutils)
   - [Table of Contents](#table-of-contents)
   - [Installation (WIP)](#installation-wip)
   - [Features](#features)
@@ -19,7 +19,7 @@ The @pike/utils package provides base utilities for calculating various metrics,
 ## Installation (WIP)
 
 ```bash
-npm install @pike/utils
+npm install @pike-sdk/utils
 ```
 
 ## Features
@@ -34,7 +34,7 @@ npm install @pike/utils
 The SDK provides access to all Pike smart contract ABIs. These can be imported directly from the package:
 
 ```typescript
-import { PTokenABI, ControllerABI } from '@pike/utils';
+import { PTokenABI, ControllerABI } from '@pike-sdk/utils';
 ```
 
 All contract ABIs are typed and include full documentation for each method and event.
@@ -48,7 +48,7 @@ Pike SDK includes a comprehensive suite of utilities for calculating various DeF
 The health index represents the overall safety of a user's position. A value below 1 indicates risk of liquidation.
 
 ```typescript
-import { calculateUserMetricsOnProtocol } from '@pike/utils';
+import { calculateUserMetricsOnProtocol } from '@pike-sdk/utils';
 
 const metrics = calculateUserMetricsOnProtocol(userData);
 console.log(metrics.healthIndex); // e.g., "1.5"
@@ -61,7 +61,7 @@ For more details about health index calculation, see [this reference](https://gi
 Calculate various APY metrics including supply APY, borrow APY, and net APY:
 
 ```typescript
-import { calculateNetMetrics } from '@pike/utils';
+import { calculateNetMetrics } from '@pike-sdk/utils';
 
 const netMetrics = calculateNetMetrics([
   {
@@ -82,7 +82,7 @@ The APY is calculated using the current rate of the contracts and multiplying by
 Convert token amounts to USD values with proper decimal handling (18 decimals):
 
 ```typescript
-import { calculateUsdValueFromAssets } from '@pike/utils';
+import { calculateUsdValueFromAssets } from '@pike-sdk/utils';
 
 const usdValue = calculateUsdValueFromAssets(
   1000000000000000000n, // 1 token in wei
@@ -100,7 +100,7 @@ Pike SDK implements various interest rate models used by the protocol. Currently
 This model implements a three-slope interest rate curve with two kink points:
 
 ```typescript
-import { DoubleJumpRateModel } from '@pike/utils';
+import { DoubleJumpRateModel } from '@pike-sdk/utils';
 
 const model = new DoubleJumpRateModel({
   cash: 1000000n,

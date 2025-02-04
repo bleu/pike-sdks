@@ -16,9 +16,9 @@ The Pike Integration Monorepo is structured to provide a comprehensive suite of 
 
 ## Packages
 
-### @pike/utils
+### @pike-sdk/utils
 
-The `@pike/utils` package serves as the foundation for Pike protocol interactions, providing essential utilities for calculations and smart contract interactions.
+The `@pike-sdk/utils` package serves as the foundation for Pike protocol interactions, providing essential utilities for calculations and smart contract interactions.
 
 **Key Features:**
 
@@ -31,9 +31,9 @@ The `@pike/utils` package serves as the foundation for Pike protocol interaction
 
 This package is designed to be integrated into any TypeScript environment. For comprehensive documentation, see the [package documentation](./packages/utils/README.md).
 
-### @pike/api-client
+### @pike-sdk/api-client
 
-Pike API Client (`@pike/api-client`) extends [@ponder/client](https://ponder-docs-git-kjs-live-ponder-sh.vercel.app/docs/query/client) to provide specialized functionality for Pike Finance protocols.
+Pike API Client (`@pike-sdk/api-client`) extends [@ponder/client](https://ponder-docs-git-kjs-live-ponder-sh.vercel.app/docs/query/client) to provide specialized functionality for Pike Finance protocols.
 
 **Key Features:**
 
@@ -47,15 +47,15 @@ For detailed information about the API client, consult the [package documentatio
 
 ### Upcoming Packages
 
-#### @pike/api-react-client (Not Started)
+#### @pike-sdk/api-react-client (Not Started)
 
 React-specific bindings and hooks for the Pike API client. This package will provide React components and hooks for seamless integration with React applications.
 
-#### @pike/viem (Not Started)
+#### @pike-sdk/viem (Not Started)
 
 Custom viem actions and utilities for reading and write information from Pike smart contracts.
 
-#### @pike/wagmi (Not Started)
+#### @pike-sdk/wagmi (Not Started)
 
 Wagmi hooks and utilities for Pike protocol integration into React frontend.
 
