@@ -1,0 +1,26 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "rootDir": "./src",
+    "outDir": "./dist",
+    "typeRoots": ["../../node_modules/@types", "node_modules/@types"],
+    "skipLibCheck": true,
+    "noImplicitAny": false,
+    "ignoreDeprecations": "5.0",
+    "declaration": true,
+    "declarationMap": false,
+    "isolatedModules": false,
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+    "paths": {
+      "@pike-sdk/utils": ["../../packages/utils/src"],
+      "@pike-sdk/utils/*": ["../../packages/utils/src/*"]
+    }
+  },
+  "include": ["src/**/*.ts"],
+  "exclude": [
+    "node_modules",
+    "dist",
+  ],
+  "references": [{ "path": "../utils/tsconfig.build.json" }]
+}
