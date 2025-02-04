@@ -14,22 +14,6 @@ The Pike Integration Monorepo is structured to provide a comprehensive suite of 
 - **API Clients**: Type-safe clients for interacting with Pike's indexer
 - **EVM integrators**: Integration with EVM packages to connect with Pike contracts
 
-## Applications
-
-### Pike Indexer
-
-Pike Markets Indexer is a robust multi-chain data indexing solution built with [Ponder](https://ponder.sh/). It serves as the backbone for tracking and querying Pike Markets-related on-chain information across multiple blockchains.
-
-**Key Features:**
-
-- Multi-chain data indexing and synchronization
-- GraphQL API for flexible data querying
-- Supplementary REST endpoints for user metrics
-- Real-time event processing and indexing
-- Comprehensive historical data access
-
-For detailed information about the indexer, please refer to the [app documentation](./packages/ponder-app/README.md).
-
 ## Packages
 
 ### @pike/utils
