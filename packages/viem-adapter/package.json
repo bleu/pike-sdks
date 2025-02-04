@@ -1,0 +1,18 @@
+{
+  "name": "@pike-sdk/viem-adapter",
+  "description": "Base package with utility functionality for all Pike packages like metric calculations, math methods, and rate models.",
+  "version": "0.0.1",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist/**"
+  ],
+  "scripts": {
+    "build": "tsc --build tsconfig.build.json"
+  },
+  "type": "module",
+  "dependencies": {
+    "viem": "^2.22.21",
+    "@pike-sdk/utils": "workspace:^"
+  }
+}

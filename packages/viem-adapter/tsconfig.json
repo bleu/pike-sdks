@@ -1,0 +1,18 @@
+{
+  "extends": "../config-typescript/base.json",
+  "include": ["src/**/*.ts"],
+  "exclude": ["node_modules", "dist"],
+  "compilerOptions": {
+    "outDir": "./dist",
+    "rootDir": "./src",
+    "composite": true,
+    "declaration": true,
+    "declarationMap": true,
+    "paths": {
+      "@pike-sdk/utils": ["../utils/src"],
+      "@pike-sdk/utils/*": ["../utils/src/*"],
+
+    }
+  },
+  "references": [{ "path": "../utils" }]
+}

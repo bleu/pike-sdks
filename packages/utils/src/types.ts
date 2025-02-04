@@ -1,3 +1,5 @@
+export type Address = `0x${string}`;
+
 export interface IPTokenRateModelData {
   totalBorrows: bigint;
   cash: bigint;
