@@ -1,5 +1,5 @@
 {
-  "name": "@pike-sdks/monorepo",
+  "name": "@pike-sdk/monorepo",
   "private": true,
   "workspaces": [
     "packages/*"
