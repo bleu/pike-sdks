@@ -61,7 +61,7 @@ export class MathSol {
  * @param decimals - Number of decimal places to show (default: 18)
  * @returns string representation of Ether amount
  */
-export function weiToEther(wei: bigint, decimals: number = 18): string {
+export function weiToEther(wei: bigint, decimals: number = 18): `${number}` {
   if (wei === 0n) return '0';
 
   // Convert to string and pad with zeros if needed
@@ -75,7 +75,9 @@ export function weiToEther(wei: bigint, decimals: number = 18): string {
   const decimalPart = weiStr.slice(-decimals).replace(/0+$/, '');
 
   // Combine parts
-  return decimalPart ? `${wholePart}.${decimalPart}` : wholePart;
+  return decimalPart
+    ? (`${wholePart}.${decimalPart}` as `${number}`)
+    : (wholePart as `${number}`);
 }
 
 /**

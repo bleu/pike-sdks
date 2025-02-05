@@ -1,8 +1,8 @@
-import { WAD, MathSol } from './math';
-import { IPTokenRateModelData } from './types';
+import { WAD, MathSol } from '../math';
+import { PTokenData } from '../types';
 
 export abstract class InterestRateModel {
-  constructor(public pTokenData: IPTokenRateModelData) {}
+  constructor(public pTokenData: PTokenData) {}
 
   abstract getUtilization(): bigint;
 
