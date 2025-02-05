@@ -3,3 +3,4 @@ export * from './FactoryAbi';
 export * from './OracleEngineAbi';
 export * from './PTokenAbi';
 export * from './RiskEngineAbi';
+export * from './types';

@@ -1,35 +1,63 @@
-export interface IPTokenRateModelData {
-  totalBorrows: bigint;
+export type Address = `0x${string}`;
+
+export type Numeric = `${number}`;
+
+export interface PTokenData {
+  id: string;
+  address: string;
+  chainId: bigint;
+  protocolId: string;
+  index?: bigint;
+  underlyingId: string;
+  symbol: string;
+  name: string;
+  decimals: number;
+  liquidationThreshold: bigint;
+  liquidationIncentive: bigint;
+  reserveFactor: bigint;
+  collateralFactor: bigint;
+  protocolSeizeShare: bigint;
+  closeFactor: bigint;
+  supplyCap: bigint;
+  borrowCap: bigint;
+  creationTransactionId: string;
+  exchangeRateStored: bigint;
+  utilization: bigint;
+  borrowRatePerSecond: bigint;
+  supplyRatePerSecond: bigint;
+  borrowRateAPY: Numeric;
+  supplyRateAPY: Numeric;
+  borrowIndex: bigint;
   cash: bigint;
+  totalSupply: bigint;
   totalReserves: bigint;
-  firstKink: bigint;
-  secondKink: bigint;
-  multiplierPerSecond: bigint;
+  totalBorrows: bigint;
+  isBorrowPaused: boolean;
+  isMintPaused: boolean;
+  isTransferPaused: boolean;
+  isSeizePaused: boolean;
+  underlyingPriceCurrent: bigint;
+  totalBorrowUsdValue: string;
+  totalSupplyUsdValue: string;
+  updatedAt: bigint;
   baseRatePerSecond: bigint;
+  multiplierPerSecond: bigint;
   firstJumpMultiplierPerSecond: bigint;
   secondJumpMultiplierPerSecond: bigint;
-  reserveFactor: bigint;
+  firstKink: bigint;
+  secondKink: bigint;
 }
 
-export interface IUserMetricsBalanceData {
-  borrowAssets: bigint;
-  interestIndex: bigint;
-  supplyShares: bigint;
-  isCollateral: boolean;
-}
-
-export interface IUserMetricsPTokenData {
+export interface UserBalanceData {
   id: string;
-  underlyingPriceCurrent: bigint; // underlying price in USD with 18 decimals
-  borrowIndex: bigint;
-  exchangeRateCurrent: bigint;
-  borrowRateAPY: string;
-  supplyRateAPY: string;
-  liquidationThreshold: bigint;
+  supplyShares: bigint;
+  borrowAssets: bigint;
+  isCollateral: boolean;
+  interestIndex: bigint;
 }
 
-export type IUserMetricsData = {
-  userBalance: IUserMetricsBalanceData;
-  pToken: IUserMetricsPTokenData;
-  eMode: { liquidationThreshold: bigint } | null;
+export type UserPositionsState = {
+  userBalance?: UserBalanceData;
+  pToken: PTokenData;
+  eMode?: { liquidationThreshold: bigint };
 }[];

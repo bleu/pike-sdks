@@ -1,9 +1,5 @@
 import { etherToWei, MathSol, weiToEther } from './math';
-import {
-  IUserMetricsPTokenData,
-  IUserMetricsBalanceData,
-  IUserMetricsData,
-} from './types';
+import { PTokenData, UserBalanceData, UserPositionsState } from './types';
 
 const YEAR = BigInt(365 * 24 * 60 * 60);
 
@@ -48,9 +44,17 @@ export function calculateUsdValueFromAssets(
 }
 
 export function calculateUserBalanceMetrics(userBalanceWithPToken: {
-  userBalance: IUserMetricsBalanceData;
-  pToken: IUserMetricsPTokenData;
+  userBalance?: UserBalanceData;
+  pToken: PTokenData;
 }) {
+  if (!userBalanceWithPToken.userBalance)
+    return {
+      storedBorrowAssets: 0n,
+      supplyAssets: 0n,
+      borrowUsdValue: `0`,
+      supplyUsdValue: `0`,
+    };
+
   const storedBorrowAssets = calculateStoredBorrowAssets(
     userBalanceWithPToken.userBalance.borrowAssets,
     userBalanceWithPToken.pToken.borrowIndex,
@@ -59,7 +63,7 @@ export function calculateUserBalanceMetrics(userBalanceWithPToken: {
 
   const supplyAssets = sharesToAssets(
     userBalanceWithPToken.userBalance.supplyShares,
-    userBalanceWithPToken.pToken.exchangeRateCurrent
+    userBalanceWithPToken.pToken.exchangeRateStored
   );
 
   return {
@@ -136,7 +140,7 @@ export function calculateNetMetrics(
   };
 }
 
-export function calculateUserMetricsOnProtocol(data: IUserMetricsData) {
+export function calculateUserMetricsOnProtocol(data: UserPositionsState) {
   const userBalances = data.map(d => {
     const metrics = calculateUserBalanceMetrics(d);
 
@@ -156,7 +160,7 @@ export function calculateUserMetricsOnProtocol(data: IUserMetricsData) {
 
   const totalCollateralWithLiquidationThreshold = userBalances.reduce(
     (acc, { metrics, eMode, pToken, userBalance }) => {
-      if (!userBalance.isCollateral) return acc;
+      if (!userBalance?.isCollateral) return acc;
 
       const liquidationThreshold = eMode
         ? eMode.liquidationThreshold
